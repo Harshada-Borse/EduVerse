@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/Style4.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+    <title>Eduverse</title>
+</head>
+
+<body>
+    <div>
+        <form id='pro' action="/profile" method="post"></form>
+        <header>
+            <a href="#" class="logo">EduVerse</a>
+            <div class="bx bx-menu" id="menu-icon"></div>
+            <ul class="navbar">
+                <li><a href="javascript:void(0);" onclick="home()">Home</a></li> <!-- Prevent default behavior -->
+            </ul>
+            <a href="#" class="logou" onclick="profileLoader()">
+                <i class='bx bxs-user-circle u'></i>
+            </a>
+        </header>
+    </div>
+
+    <section class="shows" id="shows">
+        <h2 class="heading">User Profile</h2>
+    </section>
+
+    <section class="showslist" id="showslist">
+        <div class="eduverse-container">
+            <div class="user-details">
+                <span>
+                    <b>Fullname   :   </b> {{user_details.fullname}} <br><br>
+                    <b>Username   :   </b> {{user_details.username}} <br><br>
+                    <b>Email   :   </b> {{user_details.email}} <br><br>
+                    <b>Mobile no.   :   </b> {{user_details.mobile}}
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <div class="padd"></div>
+
+    <section class="n" id="n">
+        <div class="footer">
+            <a href="#" class="logo">EduVerse</a>
+            <div class="social">
+                <a href="#"><i class='bx bxl-facebook-circle'></i></a>
+                <a href="#"><i class='bx bxl-twitter'></i></a>
+                <a href="#"><i class='bx bxl-instagram'></i></a>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        function profileLoader() {
+            $('#pro').submit();
+            return false;
+        }
+
+        function home() {
+            window.location.href = "/index.html"; // Directly redirect to index.html
+        }
+    </script>
+</body>
+
+</html>

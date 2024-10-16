@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>EduVerse Get Recommendations</title>
+	<!-- Favicon -->
+    <link href="static/assets/images/open-book.ico" rel="icon">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="static/assets/css/fontawesome.css">
+    <link rel="stylesheet" href="static/assets/css/styles.css">
+    <link rel="stylesheet" href="static/assets/css/owl.css">
+    <link rel="stylesheet" href="static/assets/css/lightbox.css">
+</head>
+<style>
+	body {
+		background-image: url('static/assets/images/meetings_bg.jpg');
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		margin:0;
+		padding-top: 100px;
+	}
+	
+</style>
+<script>
+	function calculateScores() {
+		var mathScore = parseFloat(document.getElementById("math_score").value);
+		var historyScore = parseFloat(document.getElementById("history_score").value);
+		var physicsScore = parseFloat(document.getElementById("physics_score").value);
+		var chemistryScore = parseFloat(document.getElementById("chemistry_score").value);
+		var biologyScore = parseFloat(document.getElementById("biology_score").value);
+		var englishScore = parseFloat(document.getElementById("english_score").value);
+		var geographyScore = parseFloat(document.getElementById("geography_score").value);
+
+		var totalScore = mathScore + historyScore + physicsScore + chemistryScore + biologyScore + englishScore + geographyScore;
+		var averageScore = totalScore / 7;
+
+		document.getElementById("total_score").value = totalScore.toFixed(2);
+		document.getElementById("average_score").value = averageScore.toFixed(2);
+	}
+</script>
+<body>
+	<!-- ***** Header Area Start ***** -->
+<header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    <!-- ***** Logo Start ***** -->
+                    <a href="/" class="logo">
+                        EduVerse
+                    </a>
+                    <!-- ***** Logo End ***** -->
+                    <!-- ***** Menu Start ***** -->
+                    <ul class="nav">
+                        <li><a href="/profile">Profile</a></li>
+						<li><a href="{{ url_for('logout') }}">Logout</a></li> 
+                    </ul>        
+                    <a class='menu-trigger'>
+                        <span>Menu</span>
+                    </a>
+                    <!-- ***** Menu End ***** -->
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- ***** Header Area End ***** -->
+<h1 class="center-title">Fill the details to get Recommendations</h1>
+	<form method="post" action="/pred">
+		<div class="row"></div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="gender">Gender:</label>
+                    <select class="form-control" id="gender" name="gender">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="part_time_job">Part-Time Job:</label>
+                    <select class="form-control" id="part_time_job" name="part_time_job">
+                        <option value="true">Yes</option>
+                        <option value="false">No</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="absence_days">Absence Days:</label>
+                    <input type="number" class="form-control" id="absence_days" name="absence_days">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="extracurricular_activities">Extracurricular Activities:</label>
+                    <select class="form-control" id="extracurricular_activities" name="extracurricular_activities">
+                        <option value="true">Yes</option>
+                        <option value="false">No</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="weekly_self_study_hours">Weekly Self-Study Hours:</label>
+                    <input type="number" class="form-control" id="weekly_self_study_hours" name="weekly_self_study_hours">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="math_score">Math Score:</label>
+                    <input type="number" class="form-control" id="math_score" name="math_score" onchange="calculateScores()">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="history_score">History Score:</label>
+                    <input type="number" class="form-control" id="history_score" name="history_score" onchange="calculateScores()">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="physics_score">Physics Score:</label>
+                    <input type="number" class="form-control" id="physics_score" name="physics_score" onchange="calculateScores()">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="chemistry_score">Chemistry Score:</label>
+                    <input type="number" class="form-control" id="chemistry_score" name="chemistry_score" onchange="calculateScores()">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="biology_score">Biology Score:</label>
+                    <input type="number" class="form-control" id="biology_score" name="biology_score" onchange="calculateScores()">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="english_score">English Score:</label>
+                    <input type="number" class="form-control" id="english_score" name="english_score" onchange="calculateScores()">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="geography_score">Geography Score:</label>
+                    <input type="number" class="form-control" id="geography_score" name="geography_score" onchange="calculateScores()">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="total_score">Total Score:</label>
+                    <input type="number" class="form-control" id="total_score" name="total_score" readonly>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="average_score">Average Score:</label>
+                    <input type="number" step="0.000001" class="form-control" id="average_score" name="average_score" readonly>
+                </div>
+            </div>
+        </div>
+        <!-- Add more form fields here as needed -->
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+	</form>
+	<div class="footer">
+		<p>Copyright © 2024 EduVerse All Rights Reserved. 
+			<br><a href="/" target="_parent" title="/">EduVerse</a></p>
+	  </div>
+	</section>
+  
+	<!-- Scripts -->
+	<!-- Bootstrap core JavaScript -->
+	  <script src="static/vendor/jquery/jquery.min.js"></script>
+	  <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  
+	  <script src="static/assets/js/isotope.min.js"></script>
+	  <script src="static/assets/js/owl-carousel.js"></script>
+	  <script src="static/assets/js/lightbox.js"></script>
+	  <script src="static/assets/js/tabs.js"></script>
+	  <script src="static/assets/js/video.js"></script>
+	  <script src="static/assets/js/slick-slider.js"></script>
+	  <script src="static/assets/js/custom.js"></script>
+	  <script>
+		// Initialize first nav item as active
+		$('.nav li:first').addClass('active');
+	
+		var showSection = function showSection(section, isAnimate) {
+			var direction = section.replace(/#/, ''),
+				reqSection = $('.section').filter('[data-section="' + direction + '"]'),
+				reqSectionPos = reqSection.offset().top - 0;
+	
+			if (isAnimate) {
+				$('body, html').animate({
+					scrollTop: reqSectionPos
+				}, 800);
+			} else {
+				$('body, html').scrollTop(reqSectionPos);
+			}
+		};
+	
+		var checkSection = function checkSection() {
+			$('.section').each(function () {
+				var $this = $(this),
+					topEdge = $this.offset().top - 80,
+					bottomEdge = topEdge + $this.height(),
+					wScroll = $(window).scrollTop();
+	
+				if (topEdge < wScroll && bottomEdge > wScroll) {
+					var currentId = $this.data('section'),
+						reqLink = $('a').filter('[href="#' + currentId + '"]');
+					reqLink.closest('li').addClass('active').siblings().removeClass('active');
+				}
+			});
+		};
+	
+		$(window).scroll(function () {
+			checkSection();
+		});
+	
+		$('.nav').on('click', 'a', function (e) {
+			if ($(this).attr('href').startsWith('#')) {
+				e.preventDefault();
+				showSection($(this).attr('href'), true);
+			}
+		});
+	</script>
+	
+</body>
+</html>
